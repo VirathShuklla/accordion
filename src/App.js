@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Accordian from './components/accordion';
 import RandomColor from './components/random-color';
+import StarRating from './components/star-rating';
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
       {/* Random Color Generator */}
       <RandomColor/>
 
+      {/* Star Rating */}
+      <StarRating/>
     </div>
   );
 }
