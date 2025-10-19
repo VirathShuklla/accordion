@@ -33,6 +33,8 @@ export default function StarRating({noStars=5}){
                 />
             })
         }
+        <br/>
+        <button onClick={()=> {setrating(0); sethover(0)}}>Reset Rating</button>
         </div>
         </div>
     )
