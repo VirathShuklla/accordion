@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import './styles.css';
 
 export default function RandomColor(){
@@ -9,7 +9,7 @@ export default function RandomColor(){
         return Math.floor(Math.random()*length);
     }
 
-    function handleCreateRandomHexColor(){
+    const handleCreateRandomHexColor = useCallback(()=>{
         const hex= [0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F'];
         let hexColor = '#';
         for (let i=0;i<6;i++){
@@ -17,9 +17,9 @@ export default function RandomColor(){
         }
 
         setcolor(hexColor);
-    }
+    }, []);
 
-    function handleCreateRandomRgbColor(){ 
+    const handleCreateRandomRgbColor = useCallback(()=>{ 
         const r= Math.floor(Math.random()*256);
         const g= Math.floor(Math.random()*256);
         const b= Math.floor(Math.random()*256);
@@ -27,7 +27,7 @@ export default function RandomColor(){
         console.log(rgbColor);
         setcolor(rgbColor);
 
-    }
+    }, []);
 
     useEffect(()=>{
         if (type === 'hex'){
@@ -35,7 +35,7 @@ export default function RandomColor(){
         } else {
             handleCreateRandomRgbColor();
         }
-    }, [type]);
+    }, [type, handleCreateRandomHexColor, handleCreateRandomRgbColor]);
 
     return(
         <div style={{background: color,
